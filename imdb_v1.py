@@ -5,8 +5,6 @@ import pickle
 from comet_ml import Experiment
 from keras.datasets import imdb
 
-
-
 #create an experiment with your api key
 exp = Experiment(api_key = os.environ.get("COMET_API_KEY"),
   project_name ='imdb-sentiment',
@@ -22,10 +20,7 @@ params = {
   "random_seed":random_seed
 }
 
-# with open("data/imdb_data.pickle",'rb') as f:
-#   X_train,X_test,y_train,y_test = pickle.load(f)
-
-def load_data(filepath="data/imdb_data_old.pickle"):
+def load_data(filepath="data/imdb_data.pickle"):
   try:
     with open(filepath,'rb') as f:
       data = pickle.load(f)
@@ -47,5 +42,8 @@ X_train,y_train,X_test,y_test = load_data()
 # set up experiment logs
 exp.log_multiple_params(params)
 exp.log_dataset_hash(X_train)
-X_train.shape
-X_test.shape
+
+print("output classes in training set", np.unique(y_train))
+print("Bincount of training set ", np.bincount(y_train))
+print("\n\noutput classes in test set", np.unique(y_test))
+print("Bincount of test set ", np.bincount(y_test))
