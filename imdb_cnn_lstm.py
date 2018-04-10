@@ -3,7 +3,7 @@
 from comet_ml import Experiment
 
 #create an experiment with your api key
-experiment = Experiment(api_key="Jrmp1SbY5izsv7D1PWMMRpDGD",
+experiment = Experiment(api_key = os.environ.get("COMET_API_KEY"),
   log_code=True,
   project_name='imdb-sentiment',
   auto_param_logging=False)

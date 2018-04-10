@@ -14,7 +14,7 @@ from keras.datasets import imdb
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
 #create an experiment with your api key
-exp = Experiment(api_key="Jrmp1SbY5izsv7D1PWMMRpDGD",
+exp = Experiment(api_key = os.environ.get("COMET_API_KEY"),
   project_name='imdb-sentiment',
   auto_param_logging=False)
 
