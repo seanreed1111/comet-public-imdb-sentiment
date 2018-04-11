@@ -19,7 +19,13 @@ We will run the following list of models on this dataset, using unigrams, bigram
     Kernel SVM: Bag of Words with TF-IDF Vectorizer
     Kernel SVM: Bag of Words with Count Vectorizer
     Random Forest Classifier
-    Gradient Boosted Classifier:
+    Gradient Boosted Classifier
+
+    Word Vectors: 
+        pretrained word2vec (gensim)
+        pretrained doc2vec (gensim)
+        wikipeida pretrained fastText (spacy)
+    spaCy v2.0 has an internal text classifier on IMDB that loads the dataset automatically 
     LSTM(128) with recurrent dropout
     Bidirectional LSTM(8) with dropout
     CNN-LSTM with Conv1D 64 5x5 Filters feeding into a LSTM(70)

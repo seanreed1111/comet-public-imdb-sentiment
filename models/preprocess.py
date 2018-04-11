@@ -12,7 +12,7 @@
 # from gensim.models.word2vec import Word2Vec
 
 from gensim.corpora.dictionary import Dictionary
-import spacy #`conda install -c conda-forge spacy`
+import spacy #`conda install -c conda-forge spacy=2.0.11`
 # import en_core_web_lg
 
 from bs4 import BeautifulSoup
