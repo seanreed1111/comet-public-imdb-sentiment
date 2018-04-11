@@ -24,18 +24,28 @@ from comet_ml import Experiment
 # }
 
 #extract tarfile
+dest_path = "../data/extract"
+src_path = "../data/tarfiles/aclImdb_v1.tar.gz"
 
-def load_text_data(filepath="../data/tarfiles/aclImdb_v1.tar.gz"):
+def extract_all(src_path, dest_path):
   try:
-    with tarfile.open(filepath,'r') as f:
-      # print(type(f))
-      # print(f.getnames())
-      f.extractall("../data/extract")
+    with tarfile.open(src_path,'r') as f:
+      f.extractall(dest_path)
 
-  except FileNotFoundError as e:
+  except Exception as e:
     print(e)
 
-load_text_data()
+
+
+
+# def download_imdb_data(filepath):
+#   try:
+#     with tarfile.open(filepath,'r') as f:
+#       f.extractall("../data/extract")
+
+#   except FileNotFoundError as e:
+#     print("Error. Downloading from http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz")
+
 
 # def load_keras_data(filepath="data/imdb_keras_data.pickle"):
 #   try:
