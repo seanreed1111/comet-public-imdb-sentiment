@@ -1,2 +1,5 @@
 # ignore data directory
 data/*
+
+# ignore any directory ending in IMDB
+*IMDB/*
