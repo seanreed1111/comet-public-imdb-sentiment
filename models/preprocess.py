@@ -8,9 +8,13 @@
 # import numpy as np
 # from gensim.models.tfidfmodel import TfidfModel
 # from gensim.models.phrases import Phraser, Phrases
-from gensim.corpora.dictionary import Dictionary
 # from gensim.models.doc2vec import Doc2Vec
 # from gensim.models.word2vec import Word2Vec
+
+from gensim.corpora.dictionary import Dictionary
+import spacy #`conda install -c conda-forge spacy`
+# import en_core_web_lg
+
 from bs4 import BeautifulSoup
 
 
@@ -50,11 +54,28 @@ def make_ngram(review):
   """
   pass
 
-test = ["The quick brown fox jumped over the lazy dog.".split(),
-"The quick brown fox is not that bright.".split()]
 
-# print(clean_review(test))
-dic = Dictionary(test)
-print(dic.doc2bow("quick brown fox".split())) #[(1, 1), (3, 1), (7, 1)]
-print(dic) #Dictionary(13 unique tokens: ['The', 'brown', 'dog.', 'fox', 'jumped']...)
-print(dic.token2id)#{'The': 0, 'brown': 1, 'dog.': 2, 'fox': 3, 'jumped': 4, 'lazy': 5, 'over': 6, 'quick': 7, 'the': 8, 'bright.': 9, 'is': 10, 'not': 11, 'that': 12}
+# test = ["The quick brown fox jumped over the lazy dog.".split(),
+# "The quick brown fox is not that bright.".split()]
+
+# # print(clean_review(test))
+# #MUST RUN THE TOKENIZER AND SPLIT SENTENCES INTO ARRAY BEFORE Dictionary is instantiated.
+# dic = Dictionary(test)
+# print(dic.doc2bow("quick brown fox".split())) #[(1, 1), (3, 1), (7, 1)]
+# print(dic) #Dictionary(13 unique tokens: ['The', 'brown', 'dog.', 'fox', 'jumped']...)
+# print(dic.token2id)#{'The': 0, 'brown': 1, 'dog.': 2, 'fox': 3, 'jumped': 4, 'lazy': 5, 'over': 6, 'quick': 7, 'the': 8, 'bright.': 9, 'is': 10, 'not': 11, 'that': 12}
+
+# spacy test
+
+test = "The quick brown fox jumped over the lazy dog. The quick brown fox is not that bright. Don't at me."
+
+#`python -m spacy download en`
+nlp = spacy.load('en')
+doc = nlp(test)
+
+print("Type of doc is \n", type(doc))
+for token in doc:
+  #print("type of token.text is {}",type(token.text))
+  print("text is",token.text)
+
+print(list(doc.sents)) #doesn't work because I need the dependency parse
