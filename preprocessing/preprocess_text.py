@@ -17,6 +17,13 @@ import spacy #`conda install -c conda-forge spacy=2.0.11`
 
 from bs4 import BeautifulSoup
 
+def clean_y(y_raw):
+  """
+  Strips out truth values from dicts in y_raw, converts to np array
+  Return np array of dtype=int
+  """
+  y_clean = np.array([item["POSITIVE"] for item in y_raw], dtype=int)
+  return y_clean
 
 def clean_review(raw_review):
   """

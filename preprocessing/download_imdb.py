@@ -38,16 +38,17 @@ def maybe_download_imdb(filepath):
 
   return(X_train_raw, y_train_raw, X_test_raw, y_test_raw)
 
-def clean():
-  pass
+# def clean_y(y_raw):
+#   """
+#   Strips out truth values from dicts in y_raw, converts to np array
+#   Return np array of dtype=int
+#   """
+#   y_clean = np.array([item["POSITIVE"] for item in y_raw], dtype=int)
+#   return y_clean
 
-def clean_y(y_raw):
-  y_clean = np.array([item["POSITIVE"] for item in y_raw], dtype=int)
-  return y_clean
+import preprocess_text
 
 
-def clean_x(x_raw):
-  pass
 
 if __name__ == '__main__':
   filename = 'imdb_thinc_data.pickle'
@@ -64,6 +65,7 @@ if __name__ == '__main__':
   # print("\ntype of y_train_raw:{}\n".format(type(y_train_raw)))
 
 
-  y_train = clean_y(y_train_raw)
-  y_test = clean_y(y_test_raw)
-
+  # y_train = preprocess_text.clean_y(y_train_raw)
+  # y_test = preprocess_text.clean_y(y_test_raw)
+  # X_train = preprocess_text.clean_review(X_train_raw)
+  # X_test = preprocess_text.clean_review(X_test_raw)
