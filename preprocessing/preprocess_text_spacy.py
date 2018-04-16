@@ -6,12 +6,21 @@ import re
 import logging
 import pandas as pd
 import numpy as np
-from gensim.models.tfidfmodel import TfidfModel
-from gensim.models.phrases import Phraser, Phrases
-from gensim.models.doc2vec import Doc2Vec
-from gensim.models.word2vec import Word2Vec
+# from gensim.models.tfidfmodel import TfidfModel
+# from gensim.models.phrases import Phraser, Phrases
+# from gensim.models.doc2vec import Doc2Vec
+# from gensim.models.word2vec import Word2Vec
 
 from gensim.corpora.dictionary import Dictionary
+#`conda install -c conda-forge spacy=2.0.11`
+#`python -m spacy download en`
+
+import spacy
+from spacy.matcher import PhraseMatcher
+from spacy.matcher import PhraseMatcher
+from spacy.lemmatizer import Lemmatizer
+from spacy.lang.en import LEMMA_INDEX, LEMMA_EXC, LEMMA_RULES
+
 
 from bs4 import BeautifulSoup
 
@@ -90,8 +99,20 @@ if __name__ == '__main__':
   filepath = os.path.join('..','data','thinc',filename)
   X_train_raw, _, _, _ =maybe_download_imdb(filepath)
 
+  nlp = spacy.load('en')
+  # matcher = PhraseMatcher(nlp.vocab, max_length=3) #trigrams
+  # lemmatizer = Lemmatizer(LEMMA_INDEX, LEMMA_EXC, LEMMA_RULES)
+
+
+  doc = nlp(" ".join(X_train_raw))
+
+  print("len(matcher) is", len(matcher) )
 
   # print("Type of doc is \n", type(doc))
   # # for token in doc:
   # #   #print("type of token.text is {}",type(token.text))
   # #   print("text is",token.text)
+
+  # print(list(doc.sents))
+  # for item in doc.noun_chunks:
+  #   print(item)
