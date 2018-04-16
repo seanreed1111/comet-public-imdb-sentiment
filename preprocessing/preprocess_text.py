@@ -133,8 +133,6 @@ from download_imdb import maybe_download_imdb
 
 if __name__ == '__main__':
 
-  # test ="""The quick brown fox jumped over the lazy dog. The quick brown fox is not that bright. Don't at me. Just another lazy Sunday. HUMAN BEHAVIOR IS PROGRAMMABLE.Learn the basics, best practices, science, and secrets behind Behavioral Design from the hacker neuroscientist founders of Boundless.ai in our first book, Digital Behavioral Design.
-  # """
   filename = 'imdb_thinc_data.pickle'
   filepath = os.path.join('..','data','thinc',filename)
   X_train_raw, _, X_test_raw, _ =maybe_download_imdb(filepath)
@@ -142,8 +140,6 @@ if __name__ == '__main__':
   stops = set(stopwords.words('English')) - set(["no", "not"])
 
   #first tokenize by sentences. Then remove and stem stopwords
-
-
 
   X_transform = clean_and_tokenize(X_test_raw[11:15]) #
 

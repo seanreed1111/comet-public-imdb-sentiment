@@ -1,6 +1,7 @@
 # ignore data directory
 data/*
 
-# ignore any directory ending in IMDB
-Poluli-IMDB/*
-SrinidhiRaghavan-IMDB/*
+#ignore __pycache__
+
+__pycache__/*
+
