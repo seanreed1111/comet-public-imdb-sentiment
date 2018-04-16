@@ -1,5 +1,6 @@
 import thinc.extra.datasets
 import random, os, pickle
+import numpy as np
 
 
 def download_imdb(limit=0, split=0.8):
@@ -40,14 +41,29 @@ def maybe_download_imdb(filepath):
 def clean():
   pass
 
+def clean_y(y_raw):
+  y_clean = np.array([item["POSITIVE"] for item in y_raw], dtype=int)
+  return y_clean
+
+
+def clean_x(x_raw):
+  pass
+
 if __name__ == '__main__':
   filename = 'imdb_thinc_data.pickle'
   filepath = os.path.join('..','data','thinc',filename)
-  X_train, y_train, X_test, y_test = maybe_download_imdb(filepath)
+  X_train_raw, y_train_raw, X_test_raw, y_test_raw =maybe_download_imdb(filepath)
+
+  #y's are dicts: either {'POSITIVE': True} or {'POSITIVE':False}
 
   #still need to CLEAN X_train, y_train, X_test, y_test to feed into model
 # ie  X_train, y_train, X_test, y_test = clean(maybe_download_imdb(filepath))
 
-  n = 64
-  print("\nReview {} is {}\n".format(n,X_train[n]))
-  print("\nRating is:",y_train[n]) #actual ratings are {'POSITIVE': True} or {'POSITIVE':False}
+  # n = 64
+  # print("\nReview {} is {}\n".format(X_train_raw[n],type(X_train_raw[n])))
+  # print("\ntype of y_train_raw:{}\n".format(type(y_train_raw)))
+
+
+  y_train = clean_y(y_train_raw)
+  y_test = clean_y(y_test_raw)
+
