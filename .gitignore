@@ -4,3 +4,4 @@ data/*
 #ignore .pyc
 *.pyc
 
+preprocessing/.ipynb_checkpoints/*.*
